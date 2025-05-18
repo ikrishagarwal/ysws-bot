@@ -1,0 +1,26 @@
+{
+  "name": "ysws",
+  "version": "0.0.0",
+  "description": "A slack bot to get the gist of all HackClub events right there inside slack.",
+  "main": "dist/app.js",
+  "author": "Krish",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "pnpm tsc -b src",
+    "start": "node --enable-source-maps dist/app.js",
+    "watch": "tsc-watch -b src --onSuccess \"pnpm run start\""
+  },
+  "imports": {
+    "#root/*": "./dist/*.js"
+  },
+  "dependencies": {
+    "@slack/bolt": "^4.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.5.0",
+    "tsc-watch": "^6.2.1",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  }
+}
