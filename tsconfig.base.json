@@ -29,7 +29,9 @@
     "strict": true,
     "useDefineForClassFields": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "jsx-slack"
   },
   "include": [".", "./**/*.json"],
   "exclude": ["./tsconfig.json"]

@@ -11,7 +11,16 @@ importers:
       '@slack/bolt':
         specifier: ^4.3.0
         version: 4.3.0(@types/express@5.0.2)
+      jsx-slack:
+        specifier: ^6.1.2
+        version: 6.1.2
+      yaml:
+        specifier: ^2.8.0
+        version: 2.8.0
     devDependencies:
+      '@types/react':
+        specifier: ^19.1.4
+        version: 19.1.4
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
@@ -86,6 +95,9 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
+  '@types/react@19.1.4':
+    resolution: {integrity: sha512-EB1yiiYdvySuIITtD5lhW4yPyJ31RkJkkDw794LaQYrxCSaQV/47y5o1FMC4zF9ZyjUjzJMZwbovEnT5yHTW6g==}
+
   '@types/retry@0.12.0':
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
 
@@ -150,6 +162,9 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
+
+  csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
   debug@4.4.1:
     resolution: {integrity: sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==}
@@ -311,6 +326,10 @@ packages:
   jsonwebtoken@9.0.2:
     resolution: {integrity: sha512-PRp66vJ865SSqOlgqS8hujT5U4AOgMfhrwYIuIhfKaoSCZcirrmASQr8CX7cUg+RMih+hgznrjp99o+W4pJLHQ==}
     engines: {node: '>=12', npm: '>=6'}
+
+  jsx-slack@6.1.2:
+    resolution: {integrity: sha512-IQ182499drvMKIhnrYDvYKKs/0vc9hk7yz0ssowfLJp9mRtXmwaVSxoceuWz76zjG2sl1uXaOX75nQPVXNMxXA==}
+    engines: {node: '>=14'}
 
   jwa@1.4.2:
     resolution: {integrity: sha512-eeH5JO+21J78qMvTIDdBXidBd6nG2kZjg5Ohz/1fpa28Z4CcsWUzJ1ZZyFq/3z3N17aZy+ZuBoHljASbL1WfOw==}
@@ -575,6 +594,11 @@ packages:
       utf-8-validate:
         optional: true
 
+  yaml@2.8.0:
+    resolution: {integrity: sha512-4lLa/EcQCB0cJkyts+FpIRx5G/llPxfP6VQU5KByHEhLxY3IJCH0f0Hy1MHI8sClTvsIb8qwRJ6R/ZdlDJ/leQ==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
 snapshots:
 
   '@slack/bolt@4.3.0(@types/express@5.0.2)':
@@ -684,6 +708,10 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
+  '@types/react@19.1.4':
+    dependencies:
+      csstype: 3.1.3
+
   '@types/retry@0.12.0': {}
 
   '@types/send@0.17.4':
@@ -763,6 +791,8 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  csstype@3.1.3: {}
 
   debug@4.4.1:
     dependencies:
@@ -949,6 +979,10 @@ snapshots:
       lodash.once: 4.1.1
       ms: 2.1.3
       semver: 7.7.2
+
+  jsx-slack@6.1.2:
+    dependencies:
+      '@slack/types': 2.14.0
 
   jwa@1.4.2:
     dependencies:
@@ -1189,3 +1223,5 @@ snapshots:
   wrappy@1.0.2: {}
 
   ws@8.18.2: {}
+
+  yaml@2.8.0: {}

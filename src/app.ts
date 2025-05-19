@@ -1,13 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import "#root/config";
+import { setup } from "#root/config";
 import { client } from "#root/lib/client";
+
+setup();
 
 const commandsDir = path.join(__dirname, "commands");
 const commandFiles = fs
   .readdirSync(commandsDir)
-  .filter((file) => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js") || file.endsWith(".jsx"));
 
 for (const file of commandFiles) {
   const commandPath = path.join(commandsDir, file);

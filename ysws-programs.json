@@ -1,0 +1,164 @@
+[
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "*Active YSWS Programs*",
+      "verbatim": true
+    }
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "🎓 *Highway*\nMake any hardware project, get up to 350 USD to build it! Keyboard, game console, rocket, robot, 3d printer, etc... Then, go to a 4-day hardware hackathon @ Github HQ this summer!",
+      "verbatim": true
+    }
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "🕓 Ends July 31 | 💬 <https://hackclub.slack.com/archives/C08Q1H6D79B|`#highway`> | 🌐 <https://highway.hackclub.com|Visit Highway>",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "🎓 *Sidequests*\nA short-run low-volume low-effort ysws series from nora &amp; co.",
+      "verbatim": true
+    }
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "#1: SkinAmp (ft. phoebe!) - Ship a WinAmp skin, we'll send you the WinAmp source code on CD-R (ended 2025-04-13). #2: gemerald - Write something useful in Ruby, i'll send you a sticker (best few get a book!) (started 2025-04-10, ending soon).",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "💬 <https://slack.com/archives/C08KCUK3NF5|`#sidequests`> | 🌐 <https://sidequests.hackclub.com/|Visit Sidequests>",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "🎓 *Lockin*\nWork on anything Wakatime-able on call with another Hack Clubber, spin for stickers at the end of the session.",
+      "verbatim": true
+    }
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "💬 <https://slack.com/archives/C08JV3ZV1DY|`#lock-in`> | 🌐 <https://lockin.hackclub.com/|Visit Lockin>",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "🎓 *Solder*\nDesign and solder your own custom PCB with a free electronics kit!",
+      "verbatim": true
+    }
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "🕓 1 week left | 💬 <https://slack.com/archives/C08L288G22Y|`#solder`> | 🌐 <https://solder.hackclub.com/|Visit Solder>",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "🎓 *HackCraft*\nCreate a Minecraft mod, and Hack Club sends you Minecraft Java!",
+      "verbatim": true
+    }
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "Join HackCraft to build and ship your own Minecraft mod. Access exclusive resources and a supportive community.",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "context",
+    "elements": [
+      {
+        "type": "mrkdwn",
+        "text": "🕓 2 weeks left | 💬 <https://hackclub.slack.com/archives/C07NQ5QAYNQ|`#mc-modding`> | 🌐 <https://hackcraft.hackclub.com/|Visit HackCraft>",
+        "verbatim": true
+      }
+    ]
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "actions",
+    "elements": [
+      {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "Visit YSWS",
+          "emoji": true
+        },
+        "url": "https://ysws.hackclub.com/"
+      }
+    ]
+  }
+]
