@@ -7,8 +7,6 @@ import type {
 import { client } from "#root/app";
 import { yswsData } from "#root/config";
 import { showData } from "#root/utils/showData";
-import fs from "node:fs";
-import path from "node:path";
 
 export default async ({
   command,
@@ -49,29 +47,6 @@ export default async ({
     return;
   }
 
-  // write this in a file
-  const filePath = path.join(__dirname, "..", "..", "ysws-programs.json");
-
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify(
-      JSXSlack(
-        <Blocks>
-          <Section>
-            <b>Active YSWS Programs</b>
-            <br />
-          </Section>
-          {data}
-          <Actions>
-            <Button url="https://ysws.hackclub.com/">Visit YSWS</Button>
-          </Actions>
-        </Blocks>
-      ),
-      null,
-      2
-    )
-  );
-
   await respond({
     blocks: JSXSlack(
       <Blocks>
@@ -81,7 +56,7 @@ export default async ({
         <Divider />
         {data}
         <Actions>
-          <Button actionId="next_5">Next 5 YSWS</Button>
+          <Button actionId="next_limited_5_5">Next 5 YSWS</Button>
         </Actions>
       </Blocks>
     ),
