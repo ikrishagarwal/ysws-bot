@@ -4,19 +4,13 @@ import type {
   AllMiddlewareArgs,
   SlackCommandMiddlewareArgs,
 } from "@slack/bolt";
-import { client } from "#root/app";
 import { yswsData } from "#root/config";
 import { showData } from "#root/utils/showData";
 
 export default async ({
-  command,
   ack,
   respond,
 }: SlackCommandMiddlewareArgs & AllMiddlewareArgs) => {
-  client.logger.info(
-    `Received /ysws-draft command from user: ${command.user_id}`
-  );
-
   await ack({
     blocks: JSXSlack(
       <Blocks>

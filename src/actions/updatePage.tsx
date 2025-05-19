@@ -1,7 +1,6 @@
 /** @jsxImportSource jsx-slack */
 import { JSXSlack, Blocks, Section, Actions, Button, Divider } from "jsx-slack";
 import type { BlockAction, SlackActionMiddlewareArgs } from "@slack/bolt";
-import { client } from "#root/app";
 import { yswsData } from "#root/config";
 import { showData } from "#root/utils/showData";
 
@@ -11,10 +10,6 @@ export default async ({
   ack,
   respond,
 }: SlackActionMiddlewareArgs<BlockAction>) => {
-  client.logger.info(
-    `Received button response for action: ${body.actions[0].action_id}`
-  );
-
   await ack();
 
   if (!yswsData) {
@@ -29,9 +24,6 @@ export default async ({
   const start = parseInt(body.actions[0].action_id.split("_")[1]);
   const count = parseInt(body.actions[0].action_id.split("_")[2]);
 
-  client.logger.info(
-    `Fetching YSWS programs for label: ${label}, start: ${start}, count: ${count}`
-  );
   if (!["limitedTime", "drafts", "ended", "indefinite"].includes(label)) return;
 
   const programs = yswsData[label];
