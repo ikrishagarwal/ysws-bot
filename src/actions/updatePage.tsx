@@ -5,13 +5,15 @@ import { client } from "#root/app";
 import { yswsData } from "#root/config";
 import { showData } from "#root/utils/showData";
 
-export const name = /limited_\d+_\d+/;
+export const name = /[a-zA-Z]+_\d+_\d+/;
 export default async ({
   body,
   ack,
   respond,
 }: SlackActionMiddlewareArgs<BlockAction>) => {
-  client.logger.info(`Received button response from user: ${body.user.id}`);
+  client.logger.info(
+    `Received button response for action: ${body.actions[0].action_id}`
+  );
 
   await ack();
 
@@ -20,16 +22,22 @@ export default async ({
     return;
   }
 
-  const activePrograms = yswsData["limitedTime"];
-  if (!activePrograms || activePrograms.length === 0) {
-    await respond("No active YSWS programs found.");
-    return;
-  }
-
+  const label = body.actions[0].action_id.split("_")[0];
   const start = parseInt(body.actions[0].action_id.split("_")[1]);
   const count = parseInt(body.actions[0].action_id.split("_")[2]);
 
-  const data = showData(activePrograms, start, count);
+  client.logger.info(
+    `Fetching YSWS programs for label: ${label}, start: ${start}, count: ${count}`
+  );
+  if (!["limitedTime", "drafts", "ended", "indefinite"].includes(label)) return;
+
+  const programs = yswsData[label];
+  if (!programs || programs.length === 0) {
+    await respond(`No ${label} YSWS programs found.`);
+    return;
+  }
+
+  const data = showData(programs, start, count);
 
   if (typeof data === "string") {
     await respond(data);
@@ -45,14 +53,16 @@ export default async ({
         <Divider />
         {data}
         <Actions>
-          {yswsData["limitedTime"].length > start + count && (
-            <Button actionId={`limited_${start + count}_${count}`}>
-              Next 5 YSWS ➡️
+          {start > 0 && (
+            <Button
+              actionId={`${label}_${Math.max(start - count, 0)}_${count}`}
+            >
+              ⬅️ Previous 5 YSWS
             </Button>
           )}
-          {start > 0 && (
-            <Button actionId={`limited_${start - count}_${count}`}>
-              ⬅️ Previous 5 YSWS
+          {yswsData[label].length > start + count && (
+            <Button actionId={`${label}_${start + count}_${count}`}>
+              Next 5 YSWS ➡️
             </Button>
           )}
         </Actions>

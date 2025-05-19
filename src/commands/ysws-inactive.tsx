@@ -14,7 +14,7 @@ export default async ({
   respond,
 }: SlackCommandMiddlewareArgs & AllMiddlewareArgs) => {
   client.logger.info(
-    `Received /ysws-programs command from user: ${command.user_id}`
+    `Received /ysws-inactive command from user: ${command.user_id}`
   );
 
   await ack({
@@ -34,13 +34,13 @@ export default async ({
     return;
   }
 
-  const activePrograms = yswsData["limitedTime"];
-  if (!activePrograms || activePrograms.length === 0) {
-    await respond("No active YSWS programs found.");
+  const inactivePrograms = yswsData["ended"];
+  if (!inactivePrograms || inactivePrograms.length === 0) {
+    await respond("No inactive YSWS programs found.");
     return;
   }
 
-  const data = showData(activePrograms, 0, 5);
+  const data = showData(inactivePrograms, 0, 5);
 
   if (typeof data === "string") {
     await respond(data);
@@ -51,13 +51,13 @@ export default async ({
     blocks: JSXSlack(
       <Blocks>
         <Section>
-          <b>✨ Active YSWS Programs ✨</b>
+          <b>✨ Inactive YSWS Programs ✨</b>
         </Section>
         <Divider />
         {data}
-        {activePrograms.length > 5 && (
+        {inactivePrograms.length > 5 && (
           <Actions>
-            <Button actionId="limitedTime_5_5">Next 5 YSWS ➡️</Button>
+            <Button actionId="ended_5_5">Next 5 YSWS ➡️</Button>
           </Actions>
         )}
       </Blocks>

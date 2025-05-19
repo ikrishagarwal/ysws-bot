@@ -38,11 +38,6 @@ for (const file of actionFiles) {
   }
 }
 
-client.action(/hello/, async ({ body, ack, respond }) => {
-  await ack();
-  await respond(`<@${body.user.id}> clicked the button`);
-});
-
 const main = async () => {
   client.logger.info("⚡️ Starting Bolt app...");
   await client.start();
