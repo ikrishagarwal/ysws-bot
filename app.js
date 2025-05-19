@@ -426,22 +426,6 @@ function openModal(program) {
   body.classList.add("modal-open");
 }
 
-function closeModal() {
-  const modal = document.getElementById("program-modal");
-  const body = document.body;
-
-  modal.classList.remove("active");
-  body.classList.remove("modal-open");
-}
-
-function countActivePrograms() {
-  let count = 0;
-  Object.values(programs).forEach((category) => {
-    count += category.filter((program) => program.status === "active").length;
-  });
-  return count;
-}
-
 let currentSort = "default";
 
 function sortPrograms(programs, sortType) {

@@ -37,14 +37,15 @@ export function showData(data: Program[], start: number, count: number) {
           `🕓 ${formatDeadline(program.deadline, program.status)}  |  `}
         {/* status */}
         💬{"  "}
-        {/* {`  <#${program.slack.split("/").at(-1)}|${program.slackChannel.replace(
-          "#",
-          ""
-        )}>`} */}
         {program.slack ? (
-          <a href={program.slack}>{<code>{program.slackChannel}</code>}</a>
+          <>
+            <a href={`#${program.slack.split("/").at(-1)}`}>
+              {<code>{program.slackChannel}</code>}
+            </a>{" "}
+            (<code>{program.slackChannel}</code>)
+          </>
         ) : (
-          <code>{program.slackChannel}</code>
+          <a href={program.slackChannel.replace("#", "@")} />
         )}
         {/* website */}
         {program.website && (
