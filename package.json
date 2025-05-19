@@ -4,7 +4,7 @@
   "description": "A slack bot to get the gist of all HackClub events right there inside slack.",
   "main": "dist/app.js",
   "author": "Krish",
-  "license": "MIT",
+  "license": "GNU General Public License v3.0",
   "private": true,
   "scripts": {
     "build": "pnpm tsc -b src",
