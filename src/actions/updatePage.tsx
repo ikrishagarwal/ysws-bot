@@ -18,7 +18,10 @@ export default async ({
   await ack();
 
   if (!yswsData) {
-    await respond("YSWS data is not available.");
+    await respond({
+      text: "YSWS data is unavailable.",
+      replace_original: true,
+    });
     return;
   }
 
@@ -33,14 +36,20 @@ export default async ({
 
   const programs = yswsData[label];
   if (!programs || programs.length === 0) {
-    await respond(`No ${label} YSWS programs found.`);
+    await respond({
+      text: `No ${label} YSWS programs found.`,
+      replace_original: true,
+    });
     return;
   }
 
   const data = showData(programs, start, count);
 
   if (typeof data === "string") {
-    await respond(data);
+    await respond({
+      text: data,
+      replace_original: true,
+    });
     return;
   }
 

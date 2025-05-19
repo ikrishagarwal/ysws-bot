@@ -30,20 +30,29 @@ export default async ({
   });
 
   if (!yswsData) {
-    await respond("YSWS data is not available.");
+    await respond({
+      text: "YSWS data is not available.",
+      replace_original: true,
+    });
     return;
   }
 
   const inactivePrograms = yswsData["ended"];
   if (!inactivePrograms || inactivePrograms.length === 0) {
-    await respond("No inactive YSWS programs found.");
+    await respond({
+      text: "No inactive YSWS programs found.",
+      replace_original: true,
+    });
     return;
   }
 
   const data = showData(inactivePrograms, 0, 5);
 
   if (typeof data === "string") {
-    await respond(data);
+    await respond({
+      text: data,
+      replace_original: true,
+    });
     return;
   }
 
