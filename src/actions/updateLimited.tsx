@@ -1,33 +1,19 @@
 /** @jsxImportSource jsx-slack */
 import { JSXSlack, Blocks, Section, Actions, Button, Divider } from "jsx-slack";
-import type {
-  AllMiddlewareArgs,
-  SlackCommandMiddlewareArgs,
-} from "@slack/bolt";
+import type { BlockAction, SlackActionMiddlewareArgs } from "@slack/bolt";
 import { client } from "#root/app";
 import { yswsData } from "#root/config";
 import { showData } from "#root/utils/showData";
 
+export const name = /limited_\d+_\d+/;
 export default async ({
-  command,
+  body,
   ack,
   respond,
-}: SlackCommandMiddlewareArgs & AllMiddlewareArgs) => {
-  client.logger.info(
-    `Received /ysws-programs command from user: ${command.user_id}`
-  );
+}: SlackActionMiddlewareArgs<BlockAction>) => {
+  client.logger.info(`Received button response from user: ${body.user.id}`);
 
-  await ack({
-    blocks: JSXSlack(
-      <Blocks>
-        <Section>
-          <b>Fetching YSWS Programs...</b>
-          <br />
-        </Section>
-      </Blocks>
-    ),
-    response_type: "in_channel",
-  });
+  await ack();
 
   if (!yswsData) {
     await respond("YSWS data is not available.");
@@ -40,7 +26,10 @@ export default async ({
     return;
   }
 
-  const data = showData(activePrograms, 0, 5);
+  const start = parseInt(body.actions[0].action_id.split("_")[1]);
+  const count = parseInt(body.actions[0].action_id.split("_")[2]);
+
+  const data = showData(activePrograms, start, count);
 
   if (typeof data === "string") {
     await respond(data);
@@ -56,7 +45,16 @@ export default async ({
         <Divider />
         {data}
         <Actions>
-          <Button actionId="limited_5_5">Next 5 YSWS ➡️</Button>
+          {yswsData["limitedTime"].length > start + count && (
+            <Button actionId={`limited_${start + count}_${count}`}>
+              Next 5 YSWS ➡️
+            </Button>
+          )}
+          {start > 0 && (
+            <Button actionId={`limited_${start - count}_${count}`}>
+              ⬅️ Previous 5 YSWS
+            </Button>
+          )}
         </Actions>
       </Blocks>
     ),

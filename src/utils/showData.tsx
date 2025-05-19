@@ -18,7 +18,10 @@ export function showData(data: Program[], start: number, count: number) {
   return slicedData.map((program) => (
     <>
       <Section>
-        🎓 <b>{program.name}</b>
+        🎓{" "}
+        <b>
+          {++start}. {program.name}
+        </b>
         <br />
         {program.description}
       </Section>

@@ -23,7 +23,22 @@ for (const file of commandFiles) {
   }
 }
 
-client.action("button_click", async ({ body, ack, respond }) => {
+const actionsDir = path.join(__dirname, "actions");
+const actionFiles = fs
+  .readdirSync(actionsDir)
+  .filter((file) => file.endsWith(".js") || file.endsWith(".jsx"));
+
+for (const file of actionFiles) {
+  const actionPath = path.join(actionsDir, file);
+  const actionModule = require(actionPath);
+
+  if (actionModule.default && actionModule.name) {
+    client.logger.info(`Registering action: ${actionModule.name}`);
+    client.action(actionModule.name, actionModule.default);
+  }
+}
+
+client.action(/hello/, async ({ body, ack, respond }) => {
   await ack();
   await respond(`<@${body.user.id}> clicked the button`);
 });
