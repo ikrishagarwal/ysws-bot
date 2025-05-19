@@ -3,6 +3,7 @@ import path from "node:path";
 
 import { setup } from "#root/config";
 import { client } from "#root/lib/client";
+import { autoEnd } from "./utils/autoEnd";
 
 setup();
 
@@ -31,6 +32,10 @@ const main = async () => {
   client.logger.info("⚡️ Starting Bolt app...");
   await client.start();
   client.logger.info("⚡️ Bolt app is running!");
+
+  setInterval(() => {
+    autoEnd();
+  }, 30 * 60 * 1000);
 };
 
 main();
