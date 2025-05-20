@@ -11,17 +11,7 @@ export default async ({
   ack,
   respond,
 }: SlackCommandMiddlewareArgs & AllMiddlewareArgs) => {
-  await ack({
-    blocks: JSXSlack(
-      <Blocks>
-        <Section>
-          <b>Fetching YSWS Programs...</b>
-          <br />
-        </Section>
-      </Blocks>
-    ),
-    response_type: "in_channel",
-  });
+  await ack();
 
   if (!yswsData) {
     await respond({
