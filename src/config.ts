@@ -17,6 +17,10 @@ declare global {
   }
 }
 
-export const setup = async () => {
+export const populateYswsData = async (data?: ProgramData) => {
+  if (data) {
+    yswsData = data;
+    return;
+  }
   yswsData = await loadPrograms();
 };

@@ -1,11 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { setup } from "#root/config";
+import { populateYswsData } from "#root/config";
 import { client } from "#root/lib/client";
 import { autoEnd } from "./utils/autoEnd";
 
-setup();
+populateYswsData();
 
 const commandsDir = path.join(__dirname, "commands");
 const commandFiles = fs
