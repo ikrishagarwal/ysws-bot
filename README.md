@@ -7,6 +7,7 @@
 
 A Slack bot to access HackClub's YSWS (Your Space With Support) programs right inside Slack — no need to switch between your browser and Slack!
 
+![Example of active ysws command](images/active.png)
 ## 🚀 Features
 
 - 📋 View **active**, **indefinite**, **inactive**, and **draft** YSWS programs
